@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IOT | Drzhang3</title>
+    <link>https://Drzhang3.github.io/tag/iot/</link>
+      <atom:link href="https://Drzhang3.github.io/tag/iot/index.xml" rel="self" type="application/rss+xml" />
+    <description>IOT</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 23 Nov 2018 00:00:00 +0800</lastBuildDate>
+    <image>
+      <url>https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>IOT</title>
+      <link>https://Drzhang3.github.io/tag/iot/</link>
+    </image>
+    
+    <item>
+      <title>物联网入门</title>
+      <link>https://Drzhang3.github.io/post/iot/</link>
+      <pubDate>Fri, 23 Nov 2018 00:00:00 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/post/iot/</guid>
+      <description>&lt;p&gt;最近在做一个有关物联网的项目。零零散散看了好久，笔者也不是物联网科班出身，因此走了不少弯路。最近想到可以将学习过程记录下来，既方便自己翻阅查看，避免浪费时间重复搜索，也许还可以为后来人提供一点经验和想法。&lt;/p&gt;
+&lt;p&gt;项目具体内容是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;收集海量终端设备（传感器）的数据，即时上传到物联网云平台（需要自己构建），在上面完成数据分析和处理，并推送到移动终端上。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从开发角度讲，整个项目主要包括以下几部分内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无线接入（设备端）&lt;/li&gt;
+&lt;li&gt;网关&lt;/li&gt;
+&lt;li&gt;身份设备管理+数据分析+消息推送（云端）&lt;/li&gt;
+&lt;li&gt;前端开发（手机）
+#物联网简介
+物联网，Internet of Things，顾名思义就是&lt;strong&gt;基于互联网基础上的物与物的“连接”&lt;/strong&gt;。这其中涉及到&lt;strong&gt;两层含义&lt;/strong&gt;，一是物联网构建在互联网基础之上，二是可连接之物的范围大大增加，甚至可以说是任何物品。在2017年10月召开的中国计算机大会上,梅宏院士作的报告中就有提到“万物皆可互联”。所谓“连接”本质上就是&lt;strong&gt;信息交换和通信&lt;/strong&gt;。
+如下图是物联网系统的架构示意图。
+&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/09/1655176985.png&#34; alt=&#34;process.png&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从应用的角度出发，物联网系统可分解为&lt;strong&gt;物联设备、网关、云端、用户终端&lt;/strong&gt;。
+物联设备可分为两类，一种因其支持TCP/IP，可以直接接入物联网，如wifi、GPRS/3G/4G等，一种则需要网关（实现协议转换），如zigbee，蓝牙等。
+实际上，对于一些场景，比如终端设备通过蓝牙通信的话，则手机本身就相当于网关。笔者的项目中，设备与手机之间通过蓝牙通信，终端数据通过手机的wifi或者3G/4G模块与云端通信。因此只需专注于云端服务的开发上。&lt;/p&gt;
+&lt;p&gt;#“协议”&lt;/p&gt;
+&lt;p&gt;在介绍云端消息推送服务需要用到的协议之前，鉴于笔者经常混淆各类协议，后来看到OSI七层结构时，茅塞顿开。原来平时所谓不同的协议是针对不同层讨论的，将不同层之间的协议放在一起讨论对比是初学者最容易犯的错误。
+在此，简单介绍下
+&lt;a href=&#34;http://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/OSI%25E6%25A8%25A1%25E5%259E%258B&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OSI七层结构&lt;/a&gt;，熟悉的读者可自行跳过。
+OSI是一个开放性的通信系统互连参考模型，是一个定义得非常好的协议规范。OSI模型有7层结构，每层都可以有几个子层。 OSI的7层从上到下分别是
+&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/09/3133559533.jpg&#34; alt=&#34;protocol.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;其中高层（即7、6、5、4层）定义了应用程序的功能，下面3层（即3、2、1层）主要面向通过网络的端到端的数据流。
+回到刚才的问题，消息推送服务建立在应用层协议上。物联网领域常见的有HTTP、Websocket、MQTT、CoAP等。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/09/831361696.jpg&#34; alt=&#34;pro.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下面对这几种常见的消息推送技术作简要介绍。&lt;/p&gt;
+&lt;p&gt;##HTTP与HTTPs&lt;/p&gt;
+&lt;p&gt;这是一种B/S通信模式。浏览器通过http协议的url向服务器发起请求，服务器将url对应的html内容回传给浏览器。至于具体如何请求，解析以及回传，包括https涉及的加密等，参见
+&lt;a href=&#34;http://link.zhihu.com/?target=https%3A//www.cnblogs.com/YeChing/p/6337378.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;这篇文章&lt;/a&gt;。
+回到之前的应用上，基于HTTP协议，云端只需使用相应技术设计前端网页。手机需要模拟HTTP协议向服务器发送请求，一般情况下，请求格式为xml或者json。云端接受请求后，使用Http协议的servlet进行响应，返回xml或json格式的消息。&lt;/p&gt;
+&lt;p&gt;从上面的描述中看出，这种通信方式的缺点也就是它的工作方式：请求——响应。云端不会主动向客户端推送消息，是一种&lt;strong&gt;单向通信&lt;/strong&gt;方式。&lt;/p&gt;
+&lt;p&gt;在物联网领域往往需要双向通信，需要云端主动向终端发送消息，这里的终端既可以指手机等人机接口，也可以指云控制系统中的执行机构或具有自动控制功能的传感器网络。
+##WebSocket&lt;/p&gt;
+&lt;p&gt;鉴于HTTP协议单工通信的在一些应用上的不足，工程师们发明了WebSocket。维基百科介绍如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WebSocket是一种在单个TCP连接上进行全双工通讯的协议。WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在这里贴一篇
+&lt;a href=&#34;http://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2017/05/websocket.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;博文&lt;/a&gt;，作者详细介绍了相关内容，有兴趣的读者可以进一步了解和学习。
+##MQTT
+MQTT（Message Queuing Telemetry Transport，消息队列遥测传输），是一种“发布/订阅”模式的协议。
+&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/09/887618449.jpg&#34; alt=&#34;mqtt.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在此列举常用的MQTT资料，供读者参考。
+MQTT协议服务端：
+&lt;a href=&#34;https://github.com/mqtt/mqtt.github.io/wiki/servers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/mqtt/mqtt.github.io/wiki/servers&lt;/a&gt;
+MQTT协议类库：
+&lt;a href=&#34;https://github.com/mqtt/mqtt.github.io/wiki/libraries&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/mqtt/mqtt.github.io/wiki/libraries&lt;/a&gt;
+MQTT协议官网：
+&lt;a href=&#34;http://mqtt.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://mqtt.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

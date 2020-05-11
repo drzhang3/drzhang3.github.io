@@ -1,0 +1,976 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Hongwei Zhang">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="最近在做一个有关物联网的项目。零零散散看了好久，笔者也不是物联网科班出身，因此走了不少弯路。最近想到可以将学习过程记录下来，既方便自己翻阅查看，避免浪费时间重复搜索，也许还可以为后来人提供一点经验和想法。">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://Drzhang3.github.io/post/iot/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://Drzhang3.github.io/post/iot/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Drzhang3">
+  <meta property="og:url" content="https://Drzhang3.github.io/post/iot/">
+  <meta property="og:title" content="物联网入门 | Drzhang3">
+  <meta property="og:description" content="最近在做一个有关物联网的项目。零零散散看了好久，笔者也不是物联网科班出身，因此走了不少弯路。最近想到可以将学习过程记录下来，既方便自己翻阅查看，避免浪费时间重复搜索，也许还可以为后来人提供一点经验和想法。"><meta property="og:image" content="https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2018-11-23T00:00:00&#43;08:00">
+    
+    <meta property="article:modified_time" content="2018-11-23T00:00:00&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://Drzhang3.github.io/post/iot/"
+  },
+  "headline": "物联网入门",
+  
+  "datePublished": "2018-11-23T00:00:00+08:00",
+  "dateModified": "2018-11-23T00:00:00+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Hongwei Zhang"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Drzhang3",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "最近在做一个有关物联网的项目。零零散散看了好久，笔者也不是物联网科班出身，因此走了不少弯路。最近想到可以将学习过程记录下来，既方便自己翻阅查看，避免浪费时间重复搜索，也许还可以为后来人提供一点经验和想法。"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>物联网入门 | Drzhang3</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Drzhang3</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Drzhang3</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post/"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publications/"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>物联网入门</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Nov 23, 2018
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>最近在做一个有关物联网的项目。零零散散看了好久，笔者也不是物联网科班出身，因此走了不少弯路。最近想到可以将学习过程记录下来，既方便自己翻阅查看，避免浪费时间重复搜索，也许还可以为后来人提供一点经验和想法。</p>
+<p>项目具体内容是：</p>
+<blockquote>
+<p>收集海量终端设备（传感器）的数据，即时上传到物联网云平台（需要自己构建），在上面完成数据分析和处理，并推送到移动终端上。</p>
+</blockquote>
+<p>从开发角度讲，整个项目主要包括以下几部分内容：</p>
+<ul>
+<li>无线接入（设备端）</li>
+<li>网关</li>
+<li>身份设备管理+数据分析+消息推送（云端）</li>
+<li>前端开发（手机）
+#物联网简介
+物联网，Internet of Things，顾名思义就是<strong>基于互联网基础上的物与物的“连接”</strong>。这其中涉及到<strong>两层含义</strong>，一是物联网构建在互联网基础之上，二是可连接之物的范围大大增加，甚至可以说是任何物品。在2017年10月召开的中国计算机大会上,梅宏院士作的报告中就有提到“万物皆可互联”。所谓“连接”本质上就是<strong>信息交换和通信</strong>。
+如下图是物联网系统的架构示意图。
+<img src="http://www.drzhang3.com/usr/uploads/2018/09/1655176985.png" alt="process.png"></li>
+</ul>
+<p>从应用的角度出发，物联网系统可分解为<strong>物联设备、网关、云端、用户终端</strong>。
+物联设备可分为两类，一种因其支持TCP/IP，可以直接接入物联网，如wifi、GPRS/3G/4G等，一种则需要网关（实现协议转换），如zigbee，蓝牙等。
+实际上，对于一些场景，比如终端设备通过蓝牙通信的话，则手机本身就相当于网关。笔者的项目中，设备与手机之间通过蓝牙通信，终端数据通过手机的wifi或者3G/4G模块与云端通信。因此只需专注于云端服务的开发上。</p>
+<p>#“协议”</p>
+<p>在介绍云端消息推送服务需要用到的协议之前，鉴于笔者经常混淆各类协议，后来看到OSI七层结构时，茅塞顿开。原来平时所谓不同的协议是针对不同层讨论的，将不同层之间的协议放在一起讨论对比是初学者最容易犯的错误。
+在此，简单介绍下
+<a href="http://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/OSI%25E6%25A8%25A1%25E5%259E%258B" target="_blank" rel="noopener">OSI七层结构</a>，熟悉的读者可自行跳过。
+OSI是一个开放性的通信系统互连参考模型，是一个定义得非常好的协议规范。OSI模型有7层结构，每层都可以有几个子层。 OSI的7层从上到下分别是
+<img src="http://www.drzhang3.com/usr/uploads/2018/09/3133559533.jpg" alt="protocol.jpg"></p>
+<p>其中高层（即7、6、5、4层）定义了应用程序的功能，下面3层（即3、2、1层）主要面向通过网络的端到端的数据流。
+回到刚才的问题，消息推送服务建立在应用层协议上。物联网领域常见的有HTTP、Websocket、MQTT、CoAP等。</p>
+<p><img src="http://www.drzhang3.com/usr/uploads/2018/09/831361696.jpg" alt="pro.jpg"></p>
+<p>下面对这几种常见的消息推送技术作简要介绍。</p>
+<p>##HTTP与HTTPs</p>
+<p>这是一种B/S通信模式。浏览器通过http协议的url向服务器发起请求，服务器将url对应的html内容回传给浏览器。至于具体如何请求，解析以及回传，包括https涉及的加密等，参见
+<a href="http://link.zhihu.com/?target=https%3A//www.cnblogs.com/YeChing/p/6337378.html" target="_blank" rel="noopener">这篇文章</a>。
+回到之前的应用上，基于HTTP协议，云端只需使用相应技术设计前端网页。手机需要模拟HTTP协议向服务器发送请求，一般情况下，请求格式为xml或者json。云端接受请求后，使用Http协议的servlet进行响应，返回xml或json格式的消息。</p>
+<p>从上面的描述中看出，这种通信方式的缺点也就是它的工作方式：请求——响应。云端不会主动向客户端推送消息，是一种<strong>单向通信</strong>方式。</p>
+<p>在物联网领域往往需要双向通信，需要云端主动向终端发送消息，这里的终端既可以指手机等人机接口，也可以指云控制系统中的执行机构或具有自动控制功能的传感器网络。
+##WebSocket</p>
+<p>鉴于HTTP协议单工通信的在一些应用上的不足，工程师们发明了WebSocket。维基百科介绍如下：</p>
+<blockquote>
+<p>WebSocket是一种在单个TCP连接上进行全双工通讯的协议。WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。</p>
+</blockquote>
+<p>在这里贴一篇
+<a href="http://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2017/05/websocket.html" target="_blank" rel="noopener">博文</a>，作者详细介绍了相关内容，有兴趣的读者可以进一步了解和学习。
+##MQTT
+MQTT（Message Queuing Telemetry Transport，消息队列遥测传输），是一种“发布/订阅”模式的协议。
+<img src="http://www.drzhang3.com/usr/uploads/2018/09/887618449.jpg" alt="mqtt.jpg"></p>
+<p>在此列举常用的MQTT资料，供读者参考。
+MQTT协议服务端：
+<a href="https://github.com/mqtt/mqtt.github.io/wiki/servers" target="_blank" rel="noopener">https://github.com/mqtt/mqtt.github.io/wiki/servers</a>
+MQTT协议类库：
+<a href="https://github.com/mqtt/mqtt.github.io/wiki/libraries" target="_blank" rel="noopener">https://github.com/mqtt/mqtt.github.io/wiki/libraries</a>
+MQTT协议官网：
+<a href="http://mqtt.org/" target="_blank" rel="noopener">http://mqtt.org/</a></p>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/iot/">IOT</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://Drzhang3.github.io/post/iot/&amp;text=%e7%89%a9%e8%81%94%e7%bd%91%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://Drzhang3.github.io/post/iot/&amp;t=%e7%89%a9%e8%81%94%e7%bd%91%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e7%89%a9%e8%81%94%e7%bd%91%e5%85%a5%e9%97%a8&amp;body=https://Drzhang3.github.io/post/iot/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://Drzhang3.github.io/post/iot/&amp;title=%e7%89%a9%e8%81%94%e7%bd%91%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%e7%89%a9%e8%81%94%e7%bd%91%e5%85%a5%e9%97%a8%20https://Drzhang3.github.io/post/iot/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://Drzhang3.github.io/post/iot/&amp;title=%e7%89%a9%e8%81%94%e7%bd%91%e5%85%a5%e9%97%a8" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/hongwei-zhang/avatar_hu0f2e9c4dc77b5b1d410ee8d7597d0e34_46391_270x270_fill_q90_lanczos_center.jpg" alt="Hongwei Zhang">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="https://Drzhang3.github.io">Hongwei Zhang</a></h5>
+        
+        <p class="card-text">My research interests include distributed robotics, mobile computing and programmable matter.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/drzhang3" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

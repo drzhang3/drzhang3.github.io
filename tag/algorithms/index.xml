@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms | Drzhang3</title>
+    <link>https://Drzhang3.github.io/tag/algorithms/</link>
+      <atom:link href="https://Drzhang3.github.io/tag/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <description>Algorithms</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0800</lastBuildDate>
+    <image>
+      <url>https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Algorithms</title>
+      <link>https://Drzhang3.github.io/tag/algorithms/</link>
+    </image>
+    
+    <item>
+      <title>感知机推导与证明</title>
+      <link>https://Drzhang3.github.io/post/perceptron/</link>
+      <pubDate>Thu, 19 Apr 2018 00:00:00 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/post/perceptron/</guid>
+      <description>&lt;p&gt;感知机算法提出于1957年，是对生物神经细胞的简单抽象。如果你稍微了解一点神经网络的话，就会知道神经网络又称多层感知机（Multi-Layer Perceptron,MLP)。神经网络之所以能够发挥强大的作用就是在感知机的结构上作了调整。而支持向量机(Supported Vector Machine,SVM)算法的基础就是感知机。因此，有必要了解基础的感知机算法（Perceptron Learning Algorithm,PLA）思想及其原理。&lt;/p&gt;
+&lt;p&gt;##基本思想
+感知机是一种&lt;strong&gt;线性分类&lt;/strong&gt;模型。也就是说针对的是线性可分的数据。最常见的例子就是二维平面内的一堆数据可以通过一条直线分割开。
+&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/10/2184649978.png&#34; alt=&#34;1.png&#34;&gt;
+显然，这种分割并&lt;strong&gt;不是唯一&lt;/strong&gt;  的，PLA算法就是找到其中一种可分的方案。如果推广至高维空间，就是寻找一个&lt;strong&gt;超平面&lt;/strong&gt;。学习的过程就是寻找合适的损失函数，并尽可能使损失函数最小化。
+给定数据集$D={(x_1,y_1),(x_2,y_2),&amp;hellip;,(x_m,y_m)}$，其中$x_i \in R^n,y_i \in {-1,+1},i=1,2,&amp;hellip;,N$寻找超平面$$\omega^T x+b=0 \tag{1.1}$$
+其中$\omega$和$b$就是要最终确定的超平面的参数。$w$表示超平面的法向量，$b$表示超平面的截距。则空间中任意一点$x_0 \in R^{n}$到超平面的距离可以表示为$$\frac{|\omega^T x_0+b|}{||\omega||} \tag{1.2}$$.
+对于分类任务来说，我们更关心的是不能被正确分类的点，因此，对于误分类的数据点$(x_i,y_i)$来说,有
+$$-y_i(\omega x_{i} +b)&amp;gt;0 \tag{1.3}$$
+其到超平面的距离为$$-\frac{1}{||\omega||}{y_i (\omega x_{i} +b)} \tag{1.4}$$
+则整个学习过程中的损失函数可以如下定义，即考虑所有误分类点到超平面的距离并使其最小。
+$$\frac{1}{||\omega||}\sum_{x_i \in M} {-y_i (\omega x_i +b)} \tag{1.5}$$
+对上式做简化，不考虑$\frac{1}{||\omega||}$，(之后的SVM推导时会介绍为什么可以这样做)，则上述式子变为
+$$L(\omega,b)=\sum_{x_i \in M} {-y_i (\omega x_i +b)} \tag{1.6}$$
+问题转化为求解
+$$\min_{w,b} L(\omega,b)=\sum_{x_i \in M} {-y_i (\omega x_i +b)} \tag{1.7}$$
+##求解
+在求解最优化问题时，常用梯度下降、拟牛顿法等数值计算方法。具体地，在这里采取随机梯度下降法。区别于传统的梯度下降，随机梯度下降每次并不是计算所有误分类点，而是在每次迭代过程中，随机选取一个点，按下式计算梯度。
+$$\nabla_{\omega}L(\omega,b)=-\sum_{x_i \in M}y_ix_i \tag{2.1}$$
+$$\nabla_bL(\omega,b)=-\sum_{x_i \in M}y_i \tag{2.2}$$
+随机选取误分类点$(x_i,y_i)$，更新参数$\omega,b$：
+$$\omega \leftarrow \omega+\eta y_ix_i \tag{2.3}$$
+$$b \leftarrow b+\eta y_i \tag{2.4}$$
+其中，$\eta \in (0,1]$称之为学习率。
+则感知机算法描述如下：
+输入：$D={(x_1,y_1),(x_2,y_2),&amp;hellip;,(x_m,y_m)},y_i \in {-1,+1}$；学习率$\eta \in (0,1]$；
+输出：$\omega,b$；感知机模型$$f(x)=sign(\omega x+b)$$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化$\omega,b$&lt;/li&gt;
+&lt;li&gt;随机选取数据点$(x_i,y_i)$&lt;/li&gt;
+&lt;li&gt;若出现误分类，即$-y_i(\omega x_{i} +b) \geq 0$ $$\omega \leftarrow \omega+\eta y_ix_i $$   $$b \leftarrow b+\eta y_i $$&lt;/li&gt;
+&lt;li&gt;转至2，直至没有误分类点。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;##收敛性
+所谓收敛，指的是经过&lt;strong&gt;有限次迭代&lt;/strong&gt;以后，可以得到一个正确划分正负样本的超平面。
+理论推导证明，对于线性可分的数据，感知机算法迭代的次数，也就是误分类数据点的次数有一个上界。
+现在为了推导方便，对感知机模型作简化。
+原始形式的输出模型为$$f(x)=sign(\omega^Tx+b) \tag{3.1}$$
+将其表示为向量形式&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+\begin{aligned}
+f(x)&amp;amp;=sign(\omega^Tx+b)\&lt;br&gt;
+&amp;amp;=sign(\sum_{i=1}^n \omega_ix_i+b)\&lt;br&gt;
+&amp;amp;=sign(\sum_{i=1}^n \omega_ix_i+\underbrace{b}_{\omega_0}\cdot \underbrace{1}_{x_0})\&lt;br&gt;
+&amp;amp;=sign(\sum_{i=0}^n\omega_ix_i)\&lt;br&gt;
+&amp;amp;=sign(\omega^T\hat{x})=sign(w\hat{x})
+\end{aligned}
+\end{equation}\tag{3.2}&lt;/p&gt;
+&lt;p&gt;在证明收敛上界之前，先说明几个简单的性质：
+1 最终求得的分类超平面为$w_f\hat{x}=0$将数据完全分开，则
+$$y_i(w_f\hat{x_i})\geq \min_{i} y_i(w_f\hat{x_i})&amp;gt;0 \tag{3.3}$$
+记$$\gamma= \min_{i} y_i(w_f\hat{x_i}) \tag{3.4}$$
+2 算法从$w_0=0$开始，则设$w_{k-1}$为第k个被误分类的数据，有
+$$sign(w_{k-1}\hat{x_i})\neq y_i \Leftrightarrow  y_i(w_{k-1}\hat{x_i})\leq 0 \tag{3.5}$$
+3 权值更新策略
+$$w_k\leftarrow w_{k-1}+\eta y_i\hat{x_i} \tag{3.6}$$
+算法迭代的过程就是$w_k$向$w_f$接近的过程。对于两个向量，我们可以通过下式来衡量两个向量接近的程度。
+$$\frac{w_f}{||w_f||}\frac{w_k}{||w_k||} \tag{3.7}$$&lt;/p&gt;
+&lt;p&gt;先给出结论
+$$1\geq\frac{w_f}{||w_f||}\frac{w_k}{||w_k||}\geq \sqrt{k}·constant \tag{3.8}$$
+若上式成立，显然，误分类次数也即迭代次数有上界，则算法收敛性得证。
+接下来一步一步证明。
+$$\begin{align*}w_fw_k&amp;amp;=w_f(w_{k-1}+\eta y_i\hat{x_i})\&amp;amp;=w_fw_{k-1}+\eta w_fy_i\hat{x_i}\&amp;amp;\geq w_fw_{k-1}+\eta \gamma\&amp;amp;\geq w_fw_{k-2}+2\eta \gamma\&amp;amp;\geq &amp;hellip;\&amp;amp;\geq \underbrace{w_fw_0}_0+k\eta \gamma\&amp;amp;=k\eta \gamma\end{align*}  \tag{3.9}$$&lt;/p&gt;
+&lt;p&gt;$$\begin{align*}||w_k||^2&amp;amp;=||w_{k-1}||^2+2\eta y_iw_{k-1}\hat{x_i}+\eta^2||\hat{x}_i||^2\&amp;amp;\leq ||w_{k-1}||^2+\eta^2||\hat{x}_i||^2\&amp;amp;\leq ||w_{k-1}||^2+\eta^2R^2\&amp;amp;\leq ||w_{k-2}||^2+2\eta^2R^2\&amp;amp;\leq k\eta^2R^2\end{align*} \tag{3.10}$$
+在上式的推导中，$$R=\max_{n} ||x_i||^2 \tag{3.11}$$
+将式(3.9)，式(3.10)的结论代入式(3.7)，得
+$$1\geq\frac{w_f}{||w_f||}\frac{w_k}{||w_k||}\geq \frac{k\eta \gamma}{||w_f||\sqrt{k}\eta R}\geq \sqrt{k}\frac{\gamma}{||w_f||R} \tag{3.12}$$&lt;/p&gt;
+&lt;p&gt;$$\begin{align*}k&amp;amp;\leq \frac{||w_f||^2R^2}{\gamma^2}\&amp;amp;\leq \frac{||w_f||^2 R^2}{(\min_{i} y_iw_f\hat{x_i})^2}\&amp;amp;\leq \frac{R^2}{(\min_{i} y_i\frac{w_f}{||w_f||}\hat{x_i})^2}\&amp;amp;= \frac{R^2}{\rho^2}\end{align*} \tag{3.13}$$
+至此，收敛性证明结束。
+##对偶形式
+对偶是优化理论里的问题。通常情况下，在某种条件下，原问题可以转化为等价的更容易求解的对偶问题。这里不具体展开讲对偶理论，有兴趣的读者可以自行查阅**拉格朗日对偶性**相关理论，在后续的SVM的介绍中，笔者也会进一步解释这个概念。
+这里对感知机中的原问题与对偶问题做简单梳理：
+因为感知机算法是误分类点驱动的，所以，对模型参数更新有贡献的数据一定是被误分类的点。假设样本点$(x_i,y_i)$在整个更新过程中被误分类$n_i$次，则式$(2.3),(2.4)$可以表示为
+$$\omega=\sum_{i=1}^{N} n_i\eta y_ix_i \tag{4.1}$$
+$$b=\sum_{i=1}^{N} n_i\eta y_i \tag{4.2}$$
+$n_i$越大，表明第$i$个数据点离最终要求的超平面越近，超平面只要稍微动一下，该点就从正样本变成了负样本或者相反，这样的点往往对最终的超平面影响越大。
+将式$(4.1),(4.2)$代入到感知器模型$f(x)=sign(\omega x+b)$中，得到：
+$$f(x)=sign(\sum_{j=1}^{N}n_j\eta y_jx_j·x+\sum_{j=1}^{N}n_j\eta y_j ) \tag{4.3}$$
+这时，模型中的参数由原来的$\omega$和$b$变成了$n_i$
+与原问题相对应，对偶问题描述如下：
+输入：$D={(x_1,y_1),(x_2,y_2),&amp;hellip;,(x_m,y_m)},y_i \in {-1,+1}$；学习率$\eta \in (0,1]$；
+输出：$n_i$;感知机模型$$f(x)=sign(\sum_{j=1}^{N}n_j\eta y_jx_j·x+\sum_{j=1}^{N}n_j\eta y_j )$$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化$n_i=0,\forall i=1,2,&amp;hellip;,N$&lt;/li&gt;
+&lt;li&gt;随机选取数据点$(x_i,y_i)$&lt;/li&gt;
+&lt;li&gt;若出现误分类，即$$\sum_{j=1}^{N}n_j\eta y_jx_j·x_i+\sum_{j=1}^{N}n_j\eta y_j \leq0$$时，按照下式更新：
+$$n_i \leftarrow n_i+1$$&lt;/li&gt;
+&lt;li&gt;转至2，直至没有误分类点。
+从以上推导可以看出，PLA的原始形式和对偶形式本质上一样，但从具体的计算过程来看，数据点仅以向量内积的形式出现。也就是说，可以预先计算数据点之间的内积并以矩阵的形式存储，则这个矩阵就是Gram矩阵。
+$$G=[x_i·x_j]_{M×N} \tag{4.4}$$
+#结束
+为可视化方便，在二维平面产生数据。运行程序，可将数据集分为两类。如下图
+&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/10/2053298625.png&#34; alt=&#34;2.png&#34;&gt;
+关于PLA算法，其缺点是不能处理线性不可分数据。
+笔者在开始说，感知机算法输出的超平面并不唯一，这是因为算法执行的时候，由于参数初值的不同以及每次误分类点出现的顺序不同（随机梯度下降的结果），导致对一个数据集而言，有很多种分割方案。我们需要的往往是这些分割中最“好”的那一个。那么如何定义“好”，并让算法每次都给出“好”的超平面呢？这就是之前多次提到的SVM算法。之后的博客会介绍SVM算法。
+由于作者水平有限，文中难免有错误和不当之处，欢迎大佬们批评指正！
+#References
+
+&lt;a href=&#34;http://www.drzhang3.com/usr/uploads/2018/10/2184649978.png&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1&lt;/a&gt; 李航. 统计学习方法[M]. 清华大学出版社, 2012.
+
+&lt;a href=&#34;http://www.drzhang3.com/usr/uploads/2018/10/2053298625.png&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2&lt;/a&gt; 
+&lt;a href=&#34;https://www.bilibili.com/video/av28329973/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;林轩田.《机器学习基石》视频资料.&lt;/a&gt;
+
+&lt;a href=&#34;https://www.bilibili.com/video/av28329973/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3&lt;/a&gt; 
+&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%84%9F%E7%9F%A5%E5%99%A8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;维基百科编者.感知器[G/OL].维基百科,2018(20181014)[2018-10-14].&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

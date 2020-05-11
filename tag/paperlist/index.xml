@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PaperList | Drzhang3</title>
+    <link>https://Drzhang3.github.io/tag/paperlist/</link>
+      <atom:link href="https://Drzhang3.github.io/tag/paperlist/index.xml" rel="self" type="application/rss+xml" />
+    <description>PaperList</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0800</lastBuildDate>
+    <image>
+      <url>https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>PaperList</title>
+      <link>https://Drzhang3.github.io/tag/paperlist/</link>
+    </image>
+    
+    <item>
+      <title>Deep Time Series Model PaperList</title>
+      <link>https://Drzhang3.github.io/post/timeseries/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/post/timeseries/</guid>
+      <description>&lt;p&gt;开了一个仓库，主要是近两三年各大顶会的针对深度时序数据的相关论文和代码，包括时序建模、预测和异常检测，欢迎大家开issue/pull requset提供新的reference。
+地址 &lt;a href=&#34;https://github.com/drzhang3/DeepTimeSeriesModel&#34;&gt;https://github.com/drzhang3/DeepTimeSeriesModel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其中部分文章之前有仔细研究过，如果有新的idea也欢迎留言交流。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
