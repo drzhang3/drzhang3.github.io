@@ -5,12 +5,20 @@
     <link>https://Drzhang3.github.io/author/tijin-yan/</link>
       <atom:link href="https://Drzhang3.github.io/author/tijin-yan/index.xml" rel="self" type="application/rss+xml" />
     <description>Tijin Yan</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 07 Sep 2020 11:04:54 +0800</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Oct 2020 11:52:12 +0800</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Tijin Yan</title>
       <link>https://Drzhang3.github.io/author/tijin-yan/</link>
     </image>
+    
+    <item>
+      <title>Stochastic Graph Recurrent Neural Network</title>
+      <link>https://Drzhang3.github.io/publication/sgrnn/</link>
+      <pubDate>Thu, 01 Oct 2020 11:52:12 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/sgrnn/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Revisiting Graph Convolutional Network on Semi-Supervised Node Classification From an Optimization Perspective</title>
