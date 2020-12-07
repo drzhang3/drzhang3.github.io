@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linhao Li | Drzhang3</title>
+    <link>https://Drzhang3.github.io/author/linhao-li/</link>
+      <atom:link href="https://Drzhang3.github.io/author/linhao-li/index.xml" rel="self" type="application/rss+xml" />
+    <description>Linhao Li</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 07 Dec 2020 12:02:41 +0800</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Linhao Li</title>
+      <link>https://Drzhang3.github.io/author/linhao-li/</link>
+    </image>
+    
+    <item>
+      <title>Dynamic Anchor Learning for Arbitrary-Oriented Object Detection</title>
+      <link>https://Drzhang3.github.io/publication/aaai21_dal/</link>
+      <pubDate>Mon, 07 Dec 2020 12:02:41 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/aaai21_dal/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

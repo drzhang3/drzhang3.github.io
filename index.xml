@@ -5,12 +5,36 @@
     <link>https://Drzhang3.github.io/</link>
       <atom:link href="https://Drzhang3.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Drzhang3</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0800</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 07 Dec 2020 12:02:41 +0800</lastBuildDate>
     <image>
-      <url>https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Drzhang3</title>
       <link>https://Drzhang3.github.io/</link>
     </image>
+    
+    <item>
+      <title>Dynamic Anchor Learning for Arbitrary-Oriented Object Detection</title>
+      <link>https://Drzhang3.github.io/publication/aaai21_dal/</link>
+      <pubDate>Mon, 07 Dec 2020 12:02:41 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/aaai21_dal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stochastic Graph Recurrent Neural Network</title>
+      <link>https://Drzhang3.github.io/publication/sgrnn/</link>
+      <pubDate>Thu, 01 Oct 2020 11:52:12 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/sgrnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Revisiting Graph Convolutional Network on Semi-Supervised Node Classification From an Optimization Perspective</title>
+      <link>https://Drzhang3.github.io/publication/gcn-plus/</link>
+      <pubDate>Mon, 07 Sep 2020 11:04:54 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/gcn-plus/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Deep Time Series Model PaperList</title>
@@ -28,7 +52,7 @@
       <link>https://Drzhang3.github.io/post/summary/</link>
       <pubDate>Sun, 01 Sep 2019 00:00:00 +0800</pubDate>
       <guid>https://Drzhang3.github.io/post/summary/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/10/2711366267.jpg&#34; width=&#34;50%&#34; height=&#34;50%&#34; /&gt;&lt;/p&gt;
+      <description> &lt;!-- &lt;img src=&#34;http://www.drzhang3.com/usr/uploads/2018/10/2711366267.jpg&#34; width=&#34;50%&#34; height=&#34;50%&#34; /&gt; --&gt;
 &lt;p&gt;从杭州回来短短的三四天，我把自己安排的很忙，每天有不同的饭局，着实享受了一把时间按小时分配的舒服哈哈哈哈，真的觉得时间规划细致一点，一天可以干很多事情。今天一大早跟室友去打球，小菜鸡好久没动，没蹦哒一会儿就累的全身湿透，一转眼就又要走了，距离去年建站，差不多也一年，于是想整理整理一年来在科研这条路上的感受。&lt;/p&gt;
 &lt;p&gt;一年确实快，当初立的flag如今打在脸上啪啪作响。果然是&lt;strong&gt;只靠着热情干不成一件事&lt;/strong&gt;。看看上一篇文的更新时间，我就觉得从那会儿到现在，好像一点产出都没有。&lt;/p&gt;
 &lt;p&gt;要说过去一年的收获，大约就是&lt;strong&gt;走的弯路太多&lt;/strong&gt;，诸多不顺，直到最近一段时间，才得以窥探到科研大门之一二。&lt;/p&gt;

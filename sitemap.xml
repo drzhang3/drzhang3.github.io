@@ -3,12 +3,127 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://Drzhang3.github.io/post/timeseries/</loc>
-    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <loc>https://Drzhang3.github.io/author/hongwei-zhang/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication-type/1/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/authors/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://Drzhang3.github.io/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication/aaai21_dal/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/lingjuan-miao/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/linhao-li/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication_types/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/qi-ming/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/zhiqiang-zhou/</loc>
+    <lastmod>2020-12-07T12:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication-type/3/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/tag/dynamic-graph/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication/sgrnn/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/tags/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/yan-tijin/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/yuanqing-xia/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/zirui-li/</loc>
+    <lastmod>2020-10-01T11:52:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/tag/graph-neural-network/</loc>
+    <lastmod>2020-09-07T11:04:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/tag/oversmoothing/</loc>
+    <lastmod>2020-09-07T11:04:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/publication/gcn-plus/</loc>
+    <lastmod>2020-09-07T11:04:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/tijin-yan/</loc>
+    <lastmod>2020-09-07T11:04:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/yuan-zhang/</loc>
+    <lastmod>2020-09-07T11:04:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/author/zejun-xie/</loc>
+    <lastmod>2020-09-07T11:04:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Drzhang3.github.io/post/timeseries/</loc>
     <lastmod>2019-12-11T00:00:00+08:00</lastmod>
   </url>
   
@@ -19,11 +134,6 @@
   
   <url>
     <loc>https://Drzhang3.github.io/post/</loc>
-    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Drzhang3.github.io/tags/</loc>
     <lastmod>2019-12-11T00:00:00+08:00</lastmod>
   </url>
   
@@ -58,23 +168,11 @@
   </url>
   
   <url>
-    <loc>https://Drzhang3.github.io/authors/</loc>
-  </url>
-  
-  <url>
     <loc>https://Drzhang3.github.io/categories/</loc>
   </url>
   
   <url>
     <loc>https://Drzhang3.github.io/author/hongwei-zhang/</loc>
-  </url>
-  
-  <url>
-    <loc>https://Drzhang3.github.io/publication_types/</loc>
-  </url>
-  
-  <url>
-    <loc>https://Drzhang3.github.io/publication/</loc>
   </url>
   
   <url>

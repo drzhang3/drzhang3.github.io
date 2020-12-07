@@ -5,12 +5,36 @@
     <link>https://Drzhang3.github.io/publication/</link>
       <atom:link href="https://Drzhang3.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 07 Dec 2020 12:02:41 +0800</lastBuildDate>
     <image>
-      <url>https://Drzhang3.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Publications</title>
       <link>https://Drzhang3.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Dynamic Anchor Learning for Arbitrary-Oriented Object Detection</title>
+      <link>https://Drzhang3.github.io/publication/aaai21_dal/</link>
+      <pubDate>Mon, 07 Dec 2020 12:02:41 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/aaai21_dal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stochastic Graph Recurrent Neural Network</title>
+      <link>https://Drzhang3.github.io/publication/sgrnn/</link>
+      <pubDate>Thu, 01 Oct 2020 11:52:12 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/sgrnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Revisiting Graph Convolutional Network on Semi-Supervised Node Classification From an Optimization Perspective</title>
+      <link>https://Drzhang3.github.io/publication/gcn-plus/</link>
+      <pubDate>Mon, 07 Sep 2020 11:04:54 +0800</pubDate>
+      <guid>https://Drzhang3.github.io/publication/gcn-plus/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
